@@ -81,7 +81,7 @@ public class LinkedList<T> implements Iterable<T> {
         return null;
     }
 
-    private boolean remove(T target) {
+    public boolean remove(T target) {
         Node prev = this.previous(target);
         if (prev == null) return false;
         prev.next = prev.next.next;
