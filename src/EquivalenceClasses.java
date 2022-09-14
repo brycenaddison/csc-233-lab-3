@@ -33,9 +33,11 @@ public class EquivalenceClasses<T> {
 	 */
 	public boolean add(T element) {
 		//call list for _rest
+		//?????????? :(
 		return _rest.add(element);
 	}
 	
+	//god help me
 	/**
 	 * Checks if target is contained in the list
 	 * @param target
@@ -53,11 +55,9 @@ public class EquivalenceClasses<T> {
 	public int size() {
 		//create counter value
 		int counter = 0;
-		//get the size of each LinkedList in the ArrayList and sum them together
-		for (T element : _rest) {
-			//sum sizes together
-			counter = counter + this.numClasses();
-		}
+		
+		
+		
 		//return the sum
 		return counter;
 		
