@@ -1,3 +1,5 @@
+package utilities;
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -94,5 +96,10 @@ class LinkedListTest {
         assertEquals("[baz, foo, foobar]", list.toString());
         assertTrue(list.remove("foobar"));
         assertEquals("[baz, foo]", list.toString());
+    }
+
+    @Test
+    void popFront() {
+        // TODO add tests
     }
 }
