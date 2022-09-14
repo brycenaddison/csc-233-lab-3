@@ -1,12 +1,9 @@
-import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
 
 public class LinkedList<T> implements Iterable<T> {
-    private int size;
-    private Node head;
-    private Node tail;
+    protected int _size;
+    protected Node _head;
+    protected Node _tail;
 
     private class Node {
         private T value;
@@ -23,12 +20,12 @@ public class LinkedList<T> implements Iterable<T> {
         private Node selected;
 
         LinkedListIterator() {
-            selected = head;
+            selected = _head;
         }
 
         @Override
         public boolean hasNext() {
-            return selected.next != tail;
+            return selected.next != _tail;
         }
 
         @Override
@@ -39,13 +36,13 @@ public class LinkedList<T> implements Iterable<T> {
     }
 
     public LinkedList() {
-        this.tail = new Node(null, null);
-        this.head = new Node(null, this.tail);
-        this.size = 0;
+        this._tail = new Node(null, null);
+        this._head = new Node(null, this._tail);
+        this._size = 0;
     }
 
     public int size() {
-        return this.size;
+        return this._size;
     }
 
     public boolean isEmpty() {
@@ -53,7 +50,7 @@ public class LinkedList<T> implements Iterable<T> {
     }
 
     public void clear() {
-        this.head.next = this.tail;
+        this._head.next = this._tail;
     }
 
     public boolean contains(Object o) {
@@ -68,12 +65,55 @@ public class LinkedList<T> implements Iterable<T> {
     }
 
     public void addToFront(T element) {
-        Node temp = this.head.next;
-        this.head.next = new Node(element, temp);
+        Node temp = this._head.next;
+        this._head.next = new Node(element, temp);
     }
 
     private Node previous(T target) {
-
+        Node selected = this._head;
+        while (selected.next != null && selected.next != _tail) {
+            if (selected.next.value.equals(target)) return selected;
+        }
+        return null;
     }
 
+    private boolean remove(T target) {
+        Node prev = this.previous(target);
+        if (prev == null) return false;
+        prev.next = prev.next.next;
+        return true;
+    }
+
+    private Node last() {
+        Node selected = _head;
+        while (selected.next != _tail) {
+            selected = selected.next;
+        }
+        return selected;
+    }
+
+    public void addToBack(T element) {
+        this.last().next = new Node(element, _tail);
+    }
+
+    @Override
+    public String toString() {
+        return this.iterator().toString();
+    }
+
+    private Node reverse(Node n) {
+        if (n == null) return n;
+        if (n.next == null) return n;
+
+        Node head = reverse(n.next);
+
+        n.next.next = n;
+        n.next = null;
+
+        return head;
+    }
+
+    private void reverse() {
+        this.reverse(_head);
+    }
 }
