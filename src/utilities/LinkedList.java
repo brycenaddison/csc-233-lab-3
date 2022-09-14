@@ -120,4 +120,11 @@ public class LinkedList<T> implements Iterable<T> {
     private void reverse() {
         this.reverse(_head);
     }
+    
+    public T popFront()
+    {
+    	T item = this._head.next.value;
+    	this.remove(this._head.next.value);
+    	return item; 
+    }
 }

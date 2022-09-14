@@ -90,7 +90,7 @@ public class LinkedEquivalenceClass <T> {
 
 	public boolean removeCanonical()
 	{
-		_canonical = 
+		
 	}
 
 
