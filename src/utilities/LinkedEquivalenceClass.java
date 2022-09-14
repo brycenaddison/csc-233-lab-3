@@ -90,8 +90,33 @@ public class LinkedEquivalenceClass <T> {
 
 	public boolean removeCanonical()
 	{
+		if(_canonical == null) return false;
+		
+		_canonical = _rest.popFront();
+		return true;
+	}
+	
+	public boolean demoteAndSetCanonical(T element)
+	{
+		if(_canonical == null) return false;
+		
+		T oldCanon = _canonical; 
+		_canonical = element; 
+		_rest.addToFront(oldCanon);
+		return true;
+	}
+	
+	public String toString()
+	{
+		String res = "[";
+		for(T item: _rest)
+		{
+			res += item + ", ";
+		}
+		
+		res = res.substring(0, res.length() - 2);
+		
+		return res + "]";
 		
 	}
-
-
 }
