@@ -1,11 +1,6 @@
+package utilities;
 import java.util.Comparator;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
-
-import utilities.LinkedEquivalenceClass;
 
 
 
@@ -33,11 +28,18 @@ public class EquivalenceClasses<T> {
 	 */
 	public boolean add(T element) {
 		//call list for _rest
-		//?????????? :(
-		return _rest.add(element);
+		for (LinkedEquivalenceClass<T> item : _rest) {
+			if (item.add(element)) {
+				return true;
+			}
+		}
+		_rest.add(new LinkedEquivalenceClass<T>(_comparator));
+		this.add(element);
+		return true;
+		
+		
 	}
 	
-	//god help me
 	/**
 	 * Checks if target is contained in the list
 	 * @param target
@@ -55,9 +57,10 @@ public class EquivalenceClasses<T> {
 	public int size() {
 		//create counter value
 		int counter = 0;
-		
-		
-		
+		//for loop sum all sizes
+		for (LinkedEquivalenceClass<T> item : _rest) {
+			counter = item.size() + counter;
+		}
 		//return the sum
 		return counter;
 		
