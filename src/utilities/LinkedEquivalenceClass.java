@@ -76,6 +76,7 @@ public class LinkedEquivalenceClass <T> {
 
 	public boolean belongs(T target)
 	{
+		if(_canonical == null) return false;
 		if(_comparator.compare(target, _canonical) == 0) return true;
 		return false;
 	}
