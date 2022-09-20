@@ -13,13 +13,18 @@ import java.util.ArrayList;
 public class EquivalenceClasses<T> {
 
 	protected Comparator<T> _comparator;
-	protected ArrayList<LinkedEquivalenceClass<T>> _rest;
+	
+	protected ArrayList<LinkedEquivalenceClass<T>> _classes;
 	
 	
 	public EquivalenceClasses(Comparator<T> comp){
+		
 		_comparator = comp;
-		_rest = new ArrayList<LinkedEquivalenceClass<T>>();
+		
+		_classes = new ArrayList<LinkedEquivalenceClass<T>>();
+		
 	}
+	
 	
 	/**
 	 * add element to list
@@ -27,18 +32,29 @@ public class EquivalenceClasses<T> {
 	 * @return
 	 */
 	public boolean add(T element) {
-		//call list for _rest
-		for (LinkedEquivalenceClass<T> item : _rest) {
-			if (item.add(element)) {
-				return true;
-			}
+		
+		int index = indexOfClass(element);
+		
+		//If the the location of the class does not exist, create a new LinkedEquivalenceClass to add the element to
+		if (index == -1) {
+			
+			LinkedEquivalenceClass<T> tempClass = new LinkedEquivalenceClass<T>(_comparator);
+			
+			tempClass.add(element);
+			
+			_classes.add(tempClass);
+			
+			return true;
+			
+			//return this.add(element);
 		}
-		_rest.add(new LinkedEquivalenceClass<T>(_comparator));
-		this.add(element);
-		return true;
+		
+		//if the class does exist, add the element to it
+		return _classes.get(index).add(element);	
 		
 		
 	}
+	
 	
 	/**
 	 * Checks if target is contained in the list
@@ -46,34 +62,52 @@ public class EquivalenceClasses<T> {
 	 * @return
 	 */
 	public boolean contains(T target) {
-		//call contains on _rest
-		return _rest.contains(target);
+		
+		for (LinkedEquivalenceClass<T> item : _classes) {
+			
+			if (item.contains(target) == true){
+				
+				return true;
+				
+			}
+			
+		}
+		
+		return false;
+		
 	}
+	
 	
 	/**
 	 * returns size of entire ArrayList
 	 * @return
 	 */
 	public int size() {
-		//create counter value
+		
 		int counter = 0;
-		//for loop sum all sizes
-		for (LinkedEquivalenceClass<T> item : _rest) {
+		
+		//iterate through each item in class to get size and adds them together
+		for (LinkedEquivalenceClass<T> item : _classes) {
+			
 			counter = item.size() + counter;
+			
 		}
-		//return the sum
+		
 		return counter;
 		
 	}
+	
 	
 	/**
 	 * returns the size of a specific LinkedList
 	 * @return
 	 */
 	public int numClasses() {
-		//calls size ArrayList method 
-		return _rest.size();
+		
+		return _classes.size();
+		
 	}
+	
 	
 	/**
 	 * Returns the index of class in our list
@@ -81,17 +115,27 @@ public class EquivalenceClasses<T> {
 	 * @return
 	 */
 	protected int indexOfClass(T element) {
-		//call index of for element?
-		//may need to fix
-		return _rest.indexOf(element);
+		
+		return _classes.indexOf(element);
+		
 	}
+	
 	
 	/**
 	 * Returns string
 	 */
 	public String toString() {
-		//create string
-		return _rest.toString();
+
+		String newString = "";
+		
+		for (LinkedEquivalenceClass<T> item : _classes) {
+			
+			newString = newString + "\n" + item.toString();
+			
+		}
+		
+		return newString;
+		
 	}
 	
 	

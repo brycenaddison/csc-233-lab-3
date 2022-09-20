@@ -11,12 +11,20 @@ class EquivalenceClassTest {
 	@Test
 	void addWhenClassDoesNotExist () {
 		//FIXME
-		//Create comparator
-		Comparator<Integer> comp = new Comparator<Integer>();
-		//create equiv class
+		
+		Comparator<Integer> comp = new Comparator<Integer>() {
+			// All even integers are 'equivalent'
+			// All odd integers are 'equivalent'
+			public int compare(Integer x, Integer y)
+			 { return x % 2 == y % 2 ? 0 : 1; }
+		};
 		EquivalenceClasses<Integer> equiv = new EquivalenceClasses<>(comp);
-		//add to equiv, creating class
-		assertTrue(equiv.add(3));
+		
+		assertTrue(equiv.add(2));
+		
+		
+		
+		
 		
 	}
 	
@@ -24,13 +32,18 @@ class EquivalenceClassTest {
 	void addWhenClassDoesExist () {
 		//FIXME
 		//create comparator
-		Comparator<Integer> comp = new Comparator<Integer>();
+//			Comparator<Integer> comp = new Comparator<Integer>(){
+//				// All even integers are 'equivalent'
+//				// All odd integers are 'equivalent'
+//				public int compare(Integer x, Integer y)
+//				 { return x % 2 == y % 2 ? 0 : 1; }
+//			};
 		//create equiv class
-		EquivalenceClasses<Integer> equiv = new EquivalenceClasses<>(comp);
+			//EquivalenceClasses<Integer> equiv = new EquivalenceClasses<>(comp);
 		//add 5 to class, creating class
-		equiv.add(5);
+			//equiv.add(5);
 		//add 3 to class, that should now exist
-		assertTrue(equiv.add(3));
+			//assertTrue(equiv.add(3));
 	}
 	
 	@Test
