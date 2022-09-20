@@ -2,6 +2,13 @@ package utilities;
 
 import java.util.Comparator;
 
+/**
+ * Linked Equivalence Class
+ * @author jackcrouse
+ * @version Fri Sep 23 2022
+ */
+
+
 public class LinkedEquivalenceClass <T> {
 
 	protected T _canonical; 
@@ -15,22 +22,25 @@ public class LinkedEquivalenceClass <T> {
 
 	}
 
+	//returns the canonical element which represents the class
 	public T canonical()
 	{
 		return _canonical;
 	}
 
-
+	//checks to see if the classes list is empty
 	public boolean isEmpty()
 	{
 		return _rest.size() == 0; 
 	}
 
+	//clears the classes list
 	public void clear()
 	{
 		_rest.clear();
 	}
 
+	//clears the classes list but not the canonical element
 	public void clearNonCanonical()
 	{
 		T canonical = _canonical; 
@@ -46,13 +56,13 @@ public class LinkedEquivalenceClass <T> {
 
 	public boolean add(T element)
 	{
-		if(!belongs(element)) return false;
-
 		if(_canonical == null) 
 		{
 			_canonical = element;
 			return true;
 		}
+		
+		if(!belongs(element)) return false;
 
 		_rest.addToFront(element);
 		return true;
