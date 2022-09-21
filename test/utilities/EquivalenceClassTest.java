@@ -8,9 +8,32 @@ import org.junit.jupiter.api.Test;
 
 class EquivalenceClassTest {
 
+	
 	@Test
 	void addWhenClassDoesNotExist () {
-		//FIXME
+		
+		Comparator<Integer> comp = new Comparator<Integer>() {		
+			// All even integers are 'equivalent'
+			// All odd integers are 'equivalent'
+			public int compare(Integer x, Integer y)	
+			 { return x % 2 == y % 2 ? 0 : 1; }
+		};
+		
+		EquivalenceClasses<Integer> equiv = new EquivalenceClasses<>(comp);
+		
+		assertTrue(equiv.add(2));
+		
+		//check that element was actually added
+		assertEquals(1, equiv.size());
+		
+		assertEquals(1, equiv.numClasses());
+		
+		
+	}
+	
+	
+	@Test
+	void addWhenClassDoesExist () {
 		
 		Comparator<Integer> comp = new Comparator<Integer>() {
 			// All even integers are 'equivalent'
@@ -18,113 +41,230 @@ class EquivalenceClassTest {
 			public int compare(Integer x, Integer y)
 			 { return x % 2 == y % 2 ? 0 : 1; }
 		};
+		
 		EquivalenceClasses<Integer> equiv = new EquivalenceClasses<>(comp);
 		
-		assertTrue(equiv.add(2));
+		equiv.add(2);
 		
-		
-		
-		
+		assertTrue(equiv.add(4));
 		
 	}
 	
-	@Test
-	void addWhenClassDoesExist () {
-		//FIXME
-		//create comparator
-//			Comparator<Integer> comp = new Comparator<Integer>(){
-//				// All even integers are 'equivalent'
-//				// All odd integers are 'equivalent'
-//				public int compare(Integer x, Integer y)
-//				 { return x % 2 == y % 2 ? 0 : 1; }
-//			};
-		//create equiv class
-			//EquivalenceClasses<Integer> equiv = new EquivalenceClasses<>(comp);
-		//add 5 to class, creating class
-			//equiv.add(5);
-		//add 3 to class, that should now exist
-			//assertTrue(equiv.add(3));
-	}
 	
 	@Test
 	void doesContain() {
-		//create comparator
-		//create equiv class
-		//add 5 to class, should be true
+		
+		Comparator<Integer> comp = new Comparator<Integer>() {
+			// All even integers are 'equivalent'
+			// All odd integers are 'equivalent'
+			public int compare(Integer x, Integer y)
+			 { return x % 2 == y % 2 ? 0 : 1; }
+		};
+		
+		EquivalenceClasses<Integer> equiv = new EquivalenceClasses<>(comp);
+		
+		equiv.add(2);
+		
+		assertTrue(equiv.contains(2));
 		
 	}
+	
 	
 	@Test
 	void doesNotContain() {
-		//create comparator
-		//create equiv class
-		//check that 5 is not in any class
+		
+		Comparator<Integer> comp = new Comparator<Integer>() {
+			// All even integers are 'equivalent'
+			// All odd integers are 'equivalent'
+			public int compare(Integer x, Integer y)
+			 { return x % 2 == y % 2 ? 0 : 1; }
+		};
+		
+		EquivalenceClasses<Integer> equiv = new EquivalenceClasses<>(comp);
+		
+		assertFalse(equiv.contains(3));
+		
 	}
+	
 	
 	@Test
 	void sizeIsEmpty() {
-		//create comparator
-		//create equiv class
-		//call size, should be empty
+		
+		Comparator<Integer> comp = new Comparator<Integer>() {
+			// All even integers are 'equivalent'
+			// All odd integers are 'equivalent'
+			public int compare(Integer x, Integer y)
+			 { return x % 2 == y % 2 ? 0 : 1; }
+		};
+		
+		EquivalenceClasses<Integer> equiv = new EquivalenceClasses<>(comp);
+		
+		assertEquals(0,equiv.size());
+		
 	}
 	
+	
 	@Test
-	void sizeWithOneClass() {
-		//create comparator
-		//create equiv class
-		//add class to equiv
-		//call size, should the same as class as single 
+	void sizeWithOneElementOneClass() {
+		
+		Comparator<Integer> comp = new Comparator<Integer>() {
+			// All even integers are 'equivalent'
+			// All odd integers are 'equivalent'
+			public int compare(Integer x, Integer y)
+			 { return x % 2 == y % 2 ? 0 : 1; }
+		};
+		
+		EquivalenceClasses<Integer> equiv = new EquivalenceClasses<>(comp);
+		
+		equiv.add(2);
+		
+		assertEquals(1,equiv.size());
+		
+	}
+	
+	
+	@Test
+	void sizeWithManyElementsOneClass() {
+		
+		Comparator<Integer> comp = new Comparator<Integer>() {
+			// All even integers are 'equivalent'
+			// All odd integers are 'equivalent'
+			public int compare(Integer x, Integer y)
+			 { return x % 2 == y % 2 ? 0 : 1; }
+		};
+		
+		EquivalenceClasses<Integer> equiv = new EquivalenceClasses<>(comp);
+		
+		equiv.add(2);
+		equiv.add(4);
+		equiv.add(6);
+		
+		assertEquals(3,equiv.size());
+		
+	}
+	
+	
+	@Test
+	void sizeWithOneElementManyClass() {
+		
+		Comparator<Integer> comp = new Comparator<Integer>() {
+			// All even integers are 'equivalent'
+			// All odd integers are 'equivalent'
+			public int compare(Integer x, Integer y)
+			 { return x % 2 == y % 2 ? 0 : 1; }
+		};
+		
+		EquivalenceClasses<Integer> equiv = new EquivalenceClasses<>(comp);
+		
+		equiv.add(2);
+		equiv.add(3);
+		
+		assertEquals(2,equiv.size());
 		
 	}
 	
 	@Test
-	void sizeWithManyClasses() {
-		//create comparator
-		//create equiv class
-		//add several classes to equiv
-		//call size
+	void sizeWithManyElementsManyClass() {
+		
+		Comparator<Integer> comp = new Comparator<Integer>() {
+			// All even integers are 'equivalent'
+			// All odd integers are 'equivalent'
+			public int compare(Integer x, Integer y)
+			 { return x % 2 == y % 2 ? 0 : 1; }
+		};
+		
+		EquivalenceClasses<Integer> equiv = new EquivalenceClasses<>(comp);
+		
+		equiv.add(2);
+		equiv.add(4);
+		equiv.add(6);
+		equiv.add(3);
+		equiv.add(5);
+		
+		assertEquals(5,equiv.size());
 		
 	}
+	
 	
 	@Test
 	void numClassesIsEmpty() {
-		//create comparator
-		//create equiv class
-		//check check size with empty class
+		
+		Comparator<Integer> comp = new Comparator<Integer>() {
+			// All even integers are 'equivalent'
+			// All odd integers are 'equivalent'
+			public int compare(Integer x, Integer y)
+			 { return x % 2 == y % 2 ? 0 : 1; }
+		};
+		
+		EquivalenceClasses<Integer> equiv = new EquivalenceClasses<>(comp);
+		
+		assertEquals(0,equiv.numClasses());
+		
 	}
+	
 	
 	@Test
 	void numClassesNotEmpty() {
-		//create comparator
-		//create equiv class
-		//add to class
-		//check size
-	}
-	
-	@Test
-	void indexOfFirstElement() {
-		//create comparator
-		//create equiv class
-		//add to equiv
-		//check first element
-	}
-	
-	@Test
-	void indexOfLastElement() {
-		//create comparator
-		//create equiv class
-		//add to equiv
-		//check last element
-	}
-	
-	@Test
-	void indexOfMidElement() {
-		//create comparator
-		//create equiv class
-		//add to equiv
-		//check middle element
+		
+		Comparator<Integer> comp = new Comparator<Integer>() {
+			// All even integers are 'equivalent'
+			// All odd integers are 'equivalent'
+			public int compare(Integer x, Integer y)
+			 { return x % 2 == y % 2 ? 0 : 1; }
+		};
+		
+		EquivalenceClasses<Integer> equiv = new EquivalenceClasses<>(comp);
+		
+		equiv.add(2);
+		
+		assertEquals(1,equiv.numClasses());
 		
 	}
+	
+	
+	@Test
+	void indexOfFirstClassElement() {
+		Comparator<Integer> comp = new Comparator<Integer>() {
+			// All even integers are 'equivalent'
+			// All odd integers are 'equivalent'
+			public int compare(Integer x, Integer y)
+			 { return x % 2 == y % 2 ? 0 : 1; }
+		};
+		
+		EquivalenceClasses<Integer> equiv = new EquivalenceClasses<>(comp);
+		
+		equiv.add(0);
+		equiv.add(1);
+		equiv.add(2);
+		equiv.add(4);
+		equiv.add(3);
+		
+		assertEquals(0,equiv.indexOfClass(0));
+		
+	}
+	
+	
+	@Test
+	void indexOfLastClassElement() {
+		Comparator<Integer> comp = new Comparator<Integer>() {
+			// All even integers are 'equivalent'
+			// All odd integers are 'equivalent'
+			public int compare(Integer x, Integer y)
+			 { return x % 2 == y % 2 ? 0 : 1; }
+		};
+		
+		EquivalenceClasses<Integer> equiv = new EquivalenceClasses<>(comp);
+		
+		equiv.add(0);
+		equiv.add(1);
+		equiv.add(2);
+		equiv.add(4);
+		equiv.add(3);
+		
+		assertEquals(1,equiv.indexOfClass(1));
+	}
+	
+
 	
 
 }

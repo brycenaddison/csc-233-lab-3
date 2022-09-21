@@ -45,8 +45,6 @@ public class EquivalenceClasses<T> {
 			_classes.add(tempClass);
 			
 			return true;
-			
-			//return this.add(element);
 		}
 		
 		//if the class does exist, add the element to it
@@ -89,7 +87,7 @@ public class EquivalenceClasses<T> {
 		//iterate through each item in class to get size and adds them together
 		for (LinkedEquivalenceClass<T> item : _classes) {
 			
-			counter = item.size() + counter;
+			counter = counter + item.size();
 			
 		}
 		
@@ -116,7 +114,15 @@ public class EquivalenceClasses<T> {
 	 */
 	protected int indexOfClass(T element) {
 		
-		return _classes.indexOf(element);
+		int counter = 0;
+		
+		for (LinkedEquivalenceClass<T> item : _classes){
+			if (item.belongs(element)) {
+				return counter;
+			}
+			counter ++;
+		}
+		return -1;
 		
 	}
 	
