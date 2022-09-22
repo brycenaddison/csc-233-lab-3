@@ -12,12 +12,12 @@ class EquivalenceClassTest {
 	@Test
 	void addWhenClassDoesNotExist () {
 		
-		Comparator<Integer> comp = new Comparator<Integer>()
-		 {
-		
-		public int compare(Integer x, Integer y)
-		 { 	
-			return x % 4 == y % 4 ? 0 : 1; }
+		Comparator<Integer> comp = new Comparator<Integer>(){
+			
+			//checks equivalence mod 4
+			public int compare(Integer x, Integer y)	
+			
+				{return x % 4 == y % 4 ? 0 : 1;} 		
 		 };
 		
 		EquivalenceClasses<Integer> equiv = new EquivalenceClasses<>(comp);
@@ -26,7 +26,6 @@ class EquivalenceClassTest {
 		
 		//check that element was actually added
 		assertEquals(1, equiv.size());
-		
 		assertEquals(1, equiv.numClasses());
 		
 		
@@ -36,12 +35,12 @@ class EquivalenceClassTest {
 	@Test
 	void addWhenClassDoesExist () {
 		
-		Comparator<Integer> comp = new Comparator<Integer>()
-		 {
-		
-		public int compare(Integer x, Integer y)
-		 { 	
-			return x % 4 == y % 4 ? 0 : 1; }
+		Comparator<Integer> comp = new Comparator<Integer>(){
+			
+			//checks equivalence mod 4
+			public int compare(Integer x, Integer y)	
+			
+				{return x % 4 == y % 4 ? 0 : 1;} 		
 		 };
 		
 		EquivalenceClasses<Integer> equiv = new EquivalenceClasses<>(comp);
@@ -56,25 +55,12 @@ class EquivalenceClassTest {
 	@Test
 	void doesContain() {
 		
-//		Comparator<Integer> comp = new Comparator<Integer>() {		
-//			//sorts into classes based on mod 4
-//			public int compare(Integer x, Integer y)
-//			 {int result = -1; 
-//			 if (x % 4 == 0) { result = 0; }
-//			 if (x % 4 == 1) {result = 1; }
-//			 if (x % 4 == 2) {result = 2; }
-//			 if (x % 4 == 3) {result = 3; }
-//			 
-//			 return result;
-//			 }
-//			
-//		};
-		Comparator<Integer> comp = new Comparator<Integer>()
-		 {
-		
-		public int compare(Integer x, Integer y)
-		 { 	
-			return x % 4 == y % 4 ? 0 : 1; }
+		Comparator<Integer> comp = new Comparator<Integer>(){
+			
+			//checks equivalence mod 4
+			public int compare(Integer x, Integer y)	
+			
+				{return x % 4 == y % 4 ? 0 : 1;} 		
 		 };
 		
 		EquivalenceClasses<Integer> equiv = new EquivalenceClasses<>(comp);
@@ -89,12 +75,12 @@ class EquivalenceClassTest {
 	@Test
 	void doesNotContain() {
 		
-		Comparator<Integer> comp = new Comparator<Integer>()
-		 {
-		
-		public int compare(Integer x, Integer y)
-		 { 	
-			return x % 4 == y % 4 ? 0 : 1; }
+		Comparator<Integer> comp = new Comparator<Integer>(){
+			
+			//checks equivalence mod 4
+			public int compare(Integer x, Integer y)	
+			
+				{return x % 4 == y % 4 ? 0 : 1;} 		
 		 };
 		
 		EquivalenceClasses<Integer> equiv = new EquivalenceClasses<>(comp);
@@ -107,12 +93,11 @@ class EquivalenceClassTest {
 	@Test
 	void sizeIsEmpty() {
 		
-		Comparator<Integer> comp = new Comparator<Integer>()
-		 {
-		
-		public int compare(Integer x, Integer y)
-		 { 	
-			return x % 4 == y % 4 ? 0 : 1; }
+		Comparator<Integer> comp = new Comparator<Integer>(){
+			//checks equivalence mod 4
+			public int compare(Integer x, Integer y)	
+			
+				{return x % 4 == y % 4 ? 0 : 1;} 		
 		 };
 		
 		EquivalenceClasses<Integer> equiv = new EquivalenceClasses<>(comp);
@@ -125,12 +110,12 @@ class EquivalenceClassTest {
 	@Test
 	void sizeWithOneElementOneClass() {
 		
-		Comparator<Integer> comp = new Comparator<Integer>()
-		 {
-		
-		public int compare(Integer x, Integer y)
-		 { 	
-			return x % 4 == y % 4 ? 0 : 1; }
+		Comparator<Integer> comp = new Comparator<Integer>(){
+			
+			//checks equivalence mod 4
+			public int compare(Integer x, Integer y)	
+			
+				{return x % 4 == y % 4 ? 0 : 1;} 		
 		 };
 		
 		EquivalenceClasses<Integer> equiv = new EquivalenceClasses<>(comp);
@@ -145,12 +130,12 @@ class EquivalenceClassTest {
 	@Test
 	void sizeWithManyElementsOneClass() {
 		
-		Comparator<Integer> comp = new Comparator<Integer>()
-		 {
-		
-		public int compare(Integer x, Integer y)
-		 { 	
-			return x % 4 == y % 4 ? 0 : 1; }
+		Comparator<Integer> comp = new Comparator<Integer>(){
+			
+			//checks equivalence mod 4
+			public int compare(Integer x, Integer y)	
+			
+				{return x % 4 == y % 4 ? 0 : 1;} 		
 		 };
 		
 		EquivalenceClasses<Integer> equiv = new EquivalenceClasses<>(comp);
@@ -167,12 +152,12 @@ class EquivalenceClassTest {
 	@Test
 	void sizeWithOneElementManyClass() {
 		
-		Comparator<Integer> comp = new Comparator<Integer>()
-		 {
-		
-		public int compare(Integer x, Integer y)
-		 { 	
-			return x % 4 == y % 4 ? 0 : 1; }
+		Comparator<Integer> comp = new Comparator<Integer>(){
+			
+			//checks equivalence mod 4
+			public int compare(Integer x, Integer y)	
+			
+				{return x % 4 == y % 4 ? 0 : 1;} 		
 		 };
 		
 		EquivalenceClasses<Integer> equiv = new EquivalenceClasses<>(comp);
@@ -188,12 +173,12 @@ class EquivalenceClassTest {
 	@Test
 	void sizeWithManyElementsManyClass() {
 		
-		Comparator<Integer> comp = new Comparator<Integer>()
-		 {
-		
-		public int compare(Integer x, Integer y)
-		 { 	
-			return x % 4 == y % 4 ? 0 : 1; }
+		Comparator<Integer> comp = new Comparator<Integer>(){
+			
+			//checks equivalence mod 4
+			public int compare(Integer x, Integer y)	
+			
+				{return x % 4 == y % 4 ? 0 : 1;} 		
 		 };
 		
 		EquivalenceClasses<Integer> equiv = new EquivalenceClasses<>(comp);
@@ -212,12 +197,12 @@ class EquivalenceClassTest {
 	@Test
 	void numClassesIsEmpty() {
 		
-		Comparator<Integer> comp = new Comparator<Integer>()
-		 {
-		
-		public int compare(Integer x, Integer y)
-		 { 	
-			return x % 4 == y % 4 ? 0 : 1; }
+		Comparator<Integer> comp = new Comparator<Integer>(){
+			
+			//checks equivalence mod 4
+			public int compare(Integer x, Integer y)	
+			
+				{return x % 4 == y % 4 ? 0 : 1;} 		
 		 };
 		
 		EquivalenceClasses<Integer> equiv = new EquivalenceClasses<>(comp);
@@ -228,14 +213,34 @@ class EquivalenceClassTest {
 	
 	
 	@Test
-	void numClassesNotEmpty() {
+	void numClassesOney() {
 		
-		Comparator<Integer> comp = new Comparator<Integer>()
-		 {
+		Comparator<Integer> comp = new Comparator<Integer>(){
+			
+			//checks equivalence mod 4
+			public int compare(Integer x, Integer y)	
+			
+				{return x % 4 == y % 4 ? 0 : 1;} 		
+		 };
 		
-		public int compare(Integer x, Integer y)
-		 { 	
-			return x % 4 == y % 4 ? 0 : 1; }
+		EquivalenceClasses<Integer> equiv = new EquivalenceClasses<>(comp);
+		
+		equiv.add(2);
+		
+		assertEquals(1,equiv.numClasses());
+		
+	}
+	
+	
+	@Test
+	void numClassesMany() {
+		
+		Comparator<Integer> comp = new Comparator<Integer>(){
+			
+			//checks equivalence mod 4
+			public int compare(Integer x, Integer y)	
+			
+				{return x % 4 == y % 4 ? 0 : 1;} 		
 		 };
 		
 		EquivalenceClasses<Integer> equiv = new EquivalenceClasses<>(comp);
@@ -251,12 +256,13 @@ class EquivalenceClassTest {
 	
 	@Test
 	void indexOfFirstClassElement() {
-		Comparator<Integer> comp = new Comparator<Integer>()
-		 {
 		
-		public int compare(Integer x, Integer y)
-		 { 	
-			return x % 4 == y % 4 ? 0 : 1; }
+		Comparator<Integer> comp = new Comparator<Integer>(){
+			
+			//checks equivalence mod 4
+			public int compare(Integer x, Integer y)	
+			
+				{return x % 4 == y % 4 ? 0 : 1;} 		
 		 };
 		
 		EquivalenceClasses<Integer> equiv = new EquivalenceClasses<>(comp);
@@ -273,13 +279,14 @@ class EquivalenceClassTest {
 	
 	
 	@Test
-	void indexOfOtherClassElement() {
-		Comparator<Integer> comp = new Comparator<Integer>()
-		 {
+	void indexOfMidClassElement() {
 		
-		public int compare(Integer x, Integer y)
-		 { 	
-			return x % 4 == y % 4 ? 0 : 1; }
+		Comparator<Integer> comp = new Comparator<Integer>(){
+			
+			//checks equivalence mod 4
+			public int compare(Integer x, Integer y)	
+			
+				{return x % 4 == y % 4 ? 0 : 1;} 		
 		 };
 		
 		EquivalenceClasses<Integer> equiv = new EquivalenceClasses<>(comp);
@@ -291,6 +298,29 @@ class EquivalenceClassTest {
 		equiv.add(3);
 		
 		assertEquals(1,equiv.indexOfClass(1));
+		
+	}
+	
+	@Test
+	void indexOfLastClassElement() {
+		
+		Comparator<Integer> comp = new Comparator<Integer>(){
+			
+			//checks equivalence mod 4
+			public int compare(Integer x, Integer y)	
+			
+				{return x % 4 == y % 4 ? 0 : 1;} 		
+		 };
+		
+		EquivalenceClasses<Integer> equiv = new EquivalenceClasses<>(comp);
+		
+		equiv.add(0);
+		equiv.add(1);
+		equiv.add(2);
+		equiv.add(4);
+		equiv.add(3);
+		
+		assertEquals(3,equiv.indexOfClass(3));
 		
 	}
 	
