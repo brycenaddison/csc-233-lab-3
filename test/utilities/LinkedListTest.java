@@ -100,6 +100,11 @@ class LinkedListTest {
 
     @Test
     void popFront() {
-        // TODO add tests
+        LinkedList<String> list = build();
+        assertEquals("qux", list.popFront());
+        assertEquals("baz", list.popFront());
+        assertEquals("bar", list.popFront());
+        assertEquals("foo", list.popFront());
+        assertEquals(1, list.size());
     }
 }
