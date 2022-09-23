@@ -23,11 +23,7 @@ class EquivalenceClassTest {
 		EquivalenceClasses<Integer> equiv = new EquivalenceClasses<>(comp);
 		
 		assertTrue(equiv.add(2));
-		
-		//check that element was actually added
-		assertEquals(1, equiv.size());
-		assertEquals(1, equiv.numClasses());
-		
+			
 		
 	}
 	

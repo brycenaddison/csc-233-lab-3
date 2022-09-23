@@ -115,13 +115,14 @@ public class EquivalenceClasses<T> {
 	protected int indexOfClass(T element) {
 		
 		int counter = 0;
-		
+		//for each linkedEquivClass in _classes, if the element belongs in that class, stop and return the index
 		for (LinkedEquivalenceClass<T> item : _classes){
 			if (item.belongs(element)) {
 				return counter;
 			}
 			counter ++;
 		}
+		//if the class does not exist return -1
 		return -1;
 		
 	}
